@@ -1,0 +1,13 @@
+# Netlify alternatifi: depoyu Netlify'a bağlarsan bu ayarlar kullanılır.
+[build]
+  command = "npm test && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Service worker her zaman tazelensin
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"

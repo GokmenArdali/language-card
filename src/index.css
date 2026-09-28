@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Koyu tema: Tailwind v4'te `dark:` varsayılan olarak prefers-color-scheme'i izler. */
+
+@utility pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@utility px-safe {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+/* Çalışma ekranı: metin seçimi, uzun basma menüsü ve çift dokunma yakınlaştırması kapalı. */
+@utility study-surface {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-900 dark:text-slate-100;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, sans-serif;
+    overscroll-behavior: none;
+  }
+  /* iOS, 16px altındaki alanlara odaklanınca sayfayı yakınlaştırır. */
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
